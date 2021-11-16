@@ -33,4 +33,7 @@ class ZapasView{
       $this->smarty->display('templates/zapasDeporte.tpl');
     }
 
+    function showUserHomeLocation(){
+        header("Location: ".BASE_URL."userhome");
+    }
 }

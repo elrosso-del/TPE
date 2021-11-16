@@ -37,21 +37,21 @@ class ZapasController{
         $this->view->showZapasBySport($zapas);
     }
 
-    function createZapatilla($nombre, $descripcion, $imagen, $deporte, $precio, $genero, $marca_id){
+    function createZapa($nombre, $descripcion, $imagen, $deporte, $precio, $genero, $marca_id){
         $this->authHelpers->checkLoggedIn();
         $this->model->createZapatilla($nombre, $descripcion, $imagen, $deporte, $precio, $genero, $marca_id);
-      //  $this->view->showHomeLocation();
+        $this->view->showUserHomeLocation();
     }
 
-    function deleteZapatilla($id){
+    function deleteZapa($id){
         $this->authHelpers->checkLoggedIn();
         $this->model->deleteZapatillaFromDB($id);
-      //  $this->view->showHomeLocation();
+        $this->view->showUserHomeLocation();
     }
 
-    /*function updateZapatilla($id){
+    function updateZapa($id){
         $this->authHelpers->checkLoggedIn();
-        $this->model->updatetZapatillaFromDB($id);
-        $this->view->showHomeLocation();
-    }*/
+        $this->model->updateZapa($id);
+        $this->view->showUserHomeLocation();
+    }
 }

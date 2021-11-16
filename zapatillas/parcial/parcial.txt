@@ -1,0 +1,56 @@
+EJERCICIO 1 - PRÁCTICO
+
+
+La plataforma de vuelos argentina Vol.ar está desarrollando un sistema para la venta de pasajes aéreos online. La idea es ofrecer un portal donde los usuarios puedan realizar búsquedas de vuelos, consulta y compra de pasajes. 
+
+
+Además, quieren desarrollar una sección privada de administración, donde los agentes de viajes carguen los vuelos ofrecidos.
+
+
+El departamento de IT nos brinda acceso a algunas de sus tablas de su base de datos:
+
+
+AEROLINEA(id: int, nombre: string)
+
+VUELO(id: int, origen: string, destino: string, fecha: string, estado: string, capacidad: int, internacional: bool, id_aerolinea: int)
+
+Además, nos brinda una tabla donde se almacena la información de pasajes vendidos.
+PASAJE(id: int, fecha_venta: string, clase: int, equipaje: int, id_vuelo: int, id_usuario: int)
+
+Donde clase es un número entre el 1 y el 3, y equipaje es el peso en kilos.
+Nota: Puede escribir el código en un IDE y copiar y pegar cada uno en el campo de texto separados por un comentario que indique el nombre del archivo.
+
+1)Implemente la función del modelo para modificar la clase de un pasaje.
+2)Implemente el siguiente requerimiento siguiendo el patrón MVC. No es necesario realizar las vistas, solo controlador(es), modelo(s) y las invocaciones a la vista.
+
+ - Eliminar vuelos que no tengan pasajeros de primera clase.
+
+Se deberá verificar que el agente está logueado.
+
+3)Implemente el siguiente requerimiento siguiendo el patrón MVC. No es necesario realizar las vistas, solo controlador(es), modelo(s) y las invocaciones a la vista.
+
+Cargar un vuelo
+El agente de viajes podrá cargar un nuevo vuelo. Se deberá verificar que el agente está logueado. Se deberá verificar que no exista un vuelo con mismo origen, destino y fecha a menos que la cantidad de pasajes vendidos sea mayor al 80%. Utilice el patrón MVC.
+4)Implemente el siguiente requerimiento siguiendo el patrón MVC. No es necesario realizar las vistas, solo controlador(es), modelo(s) y las invocaciones a la vista. 
+
+Buscador de vuelos dada una ciudad origen y una ciudad destino.
+Un usuario podrá realizar una búsqueda de vuelos desde un formulario. Se deben listar todos los vuelos que coincidan con la búsqueda. Se deben cumplir los siguientes requerimientos:
+
+Se debe informar el vuelo junto a la aerolínea.
+
+Se debe informar si el vuelo tiene capacidad o ya se vendieron todos sus pasajes.
+
+Informar los errores que pueden aparecer.
+
+5)Se desea implementar una API REST para exponer los datos de la plataforma a terceros.
+
+Defina los endpoints necesarios para dar soporte por API REST a las tablas AEROLINEA y VUELO. No es necesario implementarlos.
+
+Siguiendo el patrón MVC implemente la API REST solo para el siguiente requerimiento. No implemente los MODELOS. Puede usar la Vista de API REST brindada por la cátedra.
+
+Listar todos los vuelos y listar uno solo determinado por su ID.
+
+ACLARACIÓN: No es necesario implementar el router del sistema ni el archivo .htaccess
+
+6)
+

@@ -1,11 +1,10 @@
 <?php
 require_once 'Controller/ZapasController.php';
+require_once 'Controller/LoginController.php';
 require_once 'Controller/UserController.php';
 
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
-define('login','//'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].dirname($_SERVER['PHP_SELF']).'/login');
-define('logout','//'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].dirname($_SERVER['PHP_SELF']).'/logout');
 
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
@@ -16,9 +15,13 @@ if (!empty($_GET['action'])) {
 $params = explode('/', $action);
 
 $zapasController = new ZapasController();
-$userController = new userController();
+$loginController = new LoginController();
+$userController = new UserController();
 
 switch($params[0]){
+    case 'userhome':
+        $userController->showUserHome();
+        break;
     case 'home':
         $zapasController->showHome();
         break;
@@ -32,7 +35,7 @@ switch($params[0]){
         $zapasController->showDeporte($params[1]);
         break;
     case 'login': 
-        $userController->login(); 
+        $loginController->login(); 
         break;
     case 'register':
         $userController->showRegisterForm();
@@ -40,21 +43,21 @@ switch($params[0]){
     case 'registerUser':
         $userController->registerUser($_POST['email'], $_POST['password']);
         break;
-    case 'Logout': 
-        $userController->logout(); 
+    case 'logout': 
+        $loginController->logout(); 
         break;
     case 'verify': 
-        $userController->verifyLogin(); 
+        $loginController->verify(); 
         break;
-    case 'createZapatilla': 
-        $zapasController->createZapatilla($params[1],$params[2],$params[3],$params[4],$params[5],$params[6],$params[7]);
+    case 'createZapa': 
+        $zapasController->createZapa($_POST['nombre'], $_POST['descripcion'], $_POST['img'], $_POST['deporte'], $_POST['precio'], $_POST['genero'], $_POST['marca']);
         break;
-    case 'deleteZapatilla': 
-        $zapasController->deleteZapatilla($params[1]); 
+    case 'deleteZapa': 
+        $zapasController->deleteZapa($params[1]); 
         break;
-    /*case 'updateZapatilla': 
-        $zapasController->updateZapatilla($params[1]); 
-        break;*/
+    case 'updateZapa': 
+        $zapasController->updateZapa($params[1]); 
+        break;
     default: 
         echo('404 Page not found'); 
         break;

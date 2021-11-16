@@ -11,4 +11,9 @@ class AuthHelpers{
             header("Location: ".BASE_URL."login");
         }
     }
+
+    function logout(){
+        session_start();
+        session_destroy();
+    }
 }

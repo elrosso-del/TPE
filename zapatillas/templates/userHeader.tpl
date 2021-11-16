@@ -9,7 +9,7 @@
 </head>
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <a href="home" class="navbar-brand">ZapaStore.net</a>
+    <a href="userhome" class="navbar-brand">ZapaStore.net</a>
     <form class="d-flex">
       <a href="logout" class="btn btn-outline-success" type="submit">Logout</a>
     </form>

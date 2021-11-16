@@ -58,4 +58,8 @@ class ZapasModel{
         $sentencia = $this->db->prepare("INSERT INTO zapatillas (nombre, descripcion, imagen, deporte, precio, genero) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $sentencia->execute(array($nombre, $descripcion, $imagen, $deporte, $precio, $genero, $marca_id));
     }
+
+    function updateZapa($id){
+        $sentencia = $this->db->prepare("UPDATE FROM ")
+    }
 }

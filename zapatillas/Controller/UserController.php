@@ -15,33 +15,6 @@ class userController {
         $this->model = new UserModel();
         $this->helper= new AuthHelpers();
     }
-    
-    function login(){
-        $this->view->showLogin();
-    }
-
-    /*function TablaUsuarios($params=null){
-        $logeado=$this->helper->checkLoggedIn();
-        if($logeado == null || !$logeado->administrador){
-            $this->view->showError("No se permite el acceso a estos datos.", $logeado);
-        }
-        else{
-            $usuarios=$this->model->getUser();
-            $this->view->showTablaUsuario($usuarios, $logeado);
-        }
-    }*/
-
-    function MostrarFormularioLogin($params=null){
-        $logeado=$this->helper->checkLoggedIn();
-        $this->view->showLogin($logeado);
-    }
-
-    function logout($params=null){
-        session_start();
-        session_destroy();
-        $logeado=$this->helper->checkLoggedIn();
-        $this->view->showHome()($logeado);
-    }
 
     function showRegisterForm(){
         $this->view->showRegisterForm();
@@ -58,20 +31,12 @@ class userController {
         }
     }
 
-    function verifyLogin(){
-        if (!empty($_POST['email']) && !empty($_POST['password'])) {
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $user = $this->model->getUser($email);
-            if(!empty($user) && password_verify($password, $user->password)){
-                session_start();
-                $_SESSION['email'] = $email;
-                $this->view->showHome();
-            }
-            else{
-                $this->view->showLogin("Acceso denegado");
-            }
-        }
+    function showUserHome(){
+       $this->helper->checkLoggedIn();
+
+       $zapatillas = $this->model->getZapas();
+       
+       $this->view->showUserHome($zapatillas);
     }
 
 }
